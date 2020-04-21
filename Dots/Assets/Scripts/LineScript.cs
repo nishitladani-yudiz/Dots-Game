@@ -16,6 +16,7 @@ public class LineScript : MonoBehaviour
     public Text moveText;
     int movesRemaining = 60;
     public GameObject gameOverPanel;
+    public AudioSource popSound;
 
     private LineRenderer line;
     private Vector3 mousePos;
@@ -26,7 +27,7 @@ public class LineScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -98,27 +99,31 @@ public class LineScript : MonoBehaviour
             }
             if(numberOfPoints == 1)
             {
-                score += 20;
+                score += 2;
                 scoreText.text = " " + score;
                 gameOverScoreText.text = " " + score;
+                Debug.Log(score);
             }
             if(numberOfPoints == 2)
             {
-                score += 30;
+                score += 3;
                 scoreText.text = " " + score;
                 gameOverScoreText.text = " " + score;
+                Debug.Log(score);
             }
             if(numberOfPoints == 3)
             {
-                score += 40;
+                score += 4;
                 scoreText.text = " " + score;
                 gameOverScoreText.text = " " + score;
+                Debug.Log(score);
             }
             if(numberOfPoints >= 4)
             {
-                score += 50;
+                score += 5;
                 scoreText.text = " " + score;
                 gameOverScoreText.text = " " + score;
+                Debug.Log(score);
             }
             //score increment
             if(movesRemaining > 1)
@@ -128,6 +133,7 @@ public class LineScript : MonoBehaviour
                 line = null;
                 numberOfPoints = 0;
                 dots.Clear();
+                popSound.Play();
             }
             else
             {
@@ -139,20 +145,7 @@ public class LineScript : MonoBehaviour
 
         }
 
-        // else if (Input.GetMouseButtonUp(0) && line)
-        // {
-        //     mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //     mousePos.z = 0;
-        //     line.SetPosition(1, mousePos);
-        //     line = null;
-        //     currLines++;
-        // }
-        // else if (Input.GetMouseButton(0) && line)
-        // {
-        //     mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //     mousePos.z = 0;
-        //     line.SetPosition(1, mousePos);
-        // }
+        
     }
     bool compareColor(Color c1, Color c2)
     {

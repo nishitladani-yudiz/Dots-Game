@@ -24,7 +24,12 @@ public class UiManage : MonoBehaviour
     public void ResumeButton()
     {
         pausePanel.SetActive(false);
-        Time.timeScale = 1f;
+        StartCoroutine(Wait());
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.5f);
     }
 
 }
