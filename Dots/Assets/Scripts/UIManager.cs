@@ -7,6 +7,7 @@ using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
+    public AudioSource clickSound;
     public RectTransform mainMenu;
 
     void Start()
@@ -15,6 +16,7 @@ public class UIManager : MonoBehaviour
     }
     public void TimeScene()
     {
+        clickSound.Play();
         SceneManager.LoadScene(1);
     }
     public void MoveScene()

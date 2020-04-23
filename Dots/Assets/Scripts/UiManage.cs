@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class UiManage : MonoBehaviour
 {
-    public GameObject pausePanel;
+    public RectTransform pausePanel;
     public void RestartButton()
     {
         SceneManager.LoadScene(2);
     }
     public void PauseButton()
     {
-        pausePanel.SetActive(true);
-        Time.timeScale = 0f;
+        pausePanel.DOAnchorPos(Vector2.zero, 0.25f);
     }
 
     public void MainMenuButton()
@@ -23,13 +24,7 @@ public class UiManage : MonoBehaviour
 
     public void ResumeButton()
     {
-        pausePanel.SetActive(false);
-        StartCoroutine(Wait());
-    }
-
-    IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(0.5f);
+        pausePanel.DOAnchorPos(new Vector2(0,1905), 0.25f);
     }
 
 }

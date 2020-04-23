@@ -70,7 +70,7 @@ public class LineScript : MonoBehaviour
                         line.SetPosition(numberOfPoints, hitCollider.transform.position);
                         // u can set the moves code here
                         line.positionCount += 1;
-
+                        dots.Remove(dots.FindLastIndex(1));              //ArBeCmDoEvFe  ZtYhXiVsU
 
                     }
 
