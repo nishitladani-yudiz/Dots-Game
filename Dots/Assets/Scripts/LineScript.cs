@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DG.Tweening;
+using System.Linq;
 
 public class LineScript : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class LineScript : MonoBehaviour
     int score = 0;
     public Text moveText;
     int movesRemaining = 60;
-    public GameObject gameOverPanel;
+    public RectTransform gameOverPanel;
     public AudioSource popSound;
 
     private LineRenderer line;
@@ -24,10 +25,11 @@ public class LineScript : MonoBehaviour
     private int currLines = 0;
     private DotScript dotScript;
     Vector3 startPosition;
+    bool CantDestroy;
     // Start is called before the first frame update
     void Start()
     {
-        
+        CantDestroy = false;
     }
 
     // Update is called once per frame
@@ -63,17 +65,31 @@ public class LineScript : MonoBehaviour
                     Color c2 = line.startColor;
                     if (c1 == c2 && dots[numberOfPoints] != hitCollider.gameObject && (hitCollider.transform.position - line.GetPosition(numberOfPoints)).magnitude <= 1.1)
                     {
+                        //dots.All((obj)
+                        if (dots.All((obj) => obj.transform != hitCollider.gameObject.transform))
+                        {
+                            dots.Add(hitCollider.gameObject);
+                            numberOfPoints += 1;
 
-                        dots.Add(hitCollider.gameObject);
-                        numberOfPoints += 1;
-
-                        line.SetPosition(numberOfPoints, hitCollider.transform.position);
-                        // u can set the moves code here
-                        line.positionCount += 1;
-                        dots.Remove(dots.FindLastIndex(1));              //ArBeCmDoEvFe  ZtYhXiVsU
-
+                            line.SetPosition(numberOfPoints, hitCollider.transform.position);
+                            // u can set the moves code here
+                            line.positionCount += 1;
+                            //dots.Remove(dots.FindLastIndex(1));              //ArBeCmDoEvFe  ZtYhXiVsU
+                        }
+                        
                     }
 
+                }
+                
+                if (dots.Count >= 2 && hitCollider.gameObject.transform == dots[dots.Count - 2].transform)
+                {
+                    Debug.Log("same");
+                    dots.RemoveAt(dots.Count - 1);
+                    line.positionCount -= 1;
+                    numberOfPoints -= 1;
+
+                    // can do with bool is well
+                    CantDestroy = true;
                 }
 
             }
@@ -138,7 +154,7 @@ public class LineScript : MonoBehaviour
             else
             {
                 Debug.Log("Game Over");
-                gameOverPanel.SetActive(true);
+                gameOverPanel.DOAnchorPos(new Vector2(0, -100), 0.25f);
             }
             
             

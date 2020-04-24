@@ -8,9 +8,11 @@ using DG.Tweening;
 public class UiManage : MonoBehaviour
 {
     public RectTransform pausePanel;
+    public RectTransform gameOverPanel;
     public void RestartButton()
     {
-        SceneManager.LoadScene(2);
+        gameOverPanel.DOAnchorPos(Vector2.zero, 0.25f);
+        SceneManager.LoadScene(1);
     }
     public void PauseButton()
     {
