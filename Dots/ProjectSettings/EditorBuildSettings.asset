@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/UI.unity
     guid: f85949733116ee44f9dea08c12b9a1a7
   - enabled: 1
-    path: Assets/Scenes/TimeScene.unity
-    guid: 5b1c8d06cb0854c448c7166fa7b48bdb
-  - enabled: 1
     path: Assets/Scenes/MoveScenes.unity
     guid: e2b445a731ee3f543bcba3a8b9f702b7
+  - enabled: 1
+    path: Assets/Scenes/TimeScene.unity
+    guid: 0d5138bc8e31f964d8c630200bb1d2cc
   m_configObjects: {}

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class TimerCountScript : MonoBehaviour
 {
     public Text timeText;
     int timerq = 60;
     bool isTimeOver = false;
-    public GameObject gameOverPanel;
+    public RectTransform gameOverPanel;
     
     void Start()
     {
@@ -29,10 +30,10 @@ public class TimerCountScript : MonoBehaviour
             }
             else
             {
-                timeText.text = "Time's UP";
+                timeText.text = "0";
                 //Debug.Log("Game Over");
                 isTimeOver = true;
-                gameOverPanel.SetActive(true);
+                gameOverPanel.DOAnchorPos(new Vector2(0, -100), 0.25f);
             }
             
         }
