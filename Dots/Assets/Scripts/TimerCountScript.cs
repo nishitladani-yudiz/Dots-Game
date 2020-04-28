@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class TimerCountScript : MonoBehaviour
 {
+    public GameObject pauseButton;
     public Text timeText;
     int timerq = 60;
     bool isTimeOver = false;
@@ -33,7 +34,9 @@ public class TimerCountScript : MonoBehaviour
                 timeText.text = "0";
                 //Debug.Log("Game Over");
                 isTimeOver = true;
+
                 gameOverPanel.DOAnchorPos(new Vector2(0, -100), 0.25f);
+                pauseButton.SetActive(false);
             }
             
         }

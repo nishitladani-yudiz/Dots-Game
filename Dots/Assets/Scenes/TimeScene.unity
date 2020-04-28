@@ -1878,6 +1878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af312fadbbd5b342b0ec01ded7fee88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseButton: {fileID: 109256970}
   timeText: {fileID: 1519575331}
   gameOverPanel: {fileID: 77106618}
 --- !u!4 &1023290754
@@ -2479,6 +2480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c553d7272e2bda4d917c6fdfb571dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseButton: {fileID: 109256970}
   material: {fileID: 2100000, guid: e662478c485b90543bac25119f39659d, type: 2}
   dots: []
   LinePrefab: {fileID: 8980489223848960263, guid: 7871a7be5a6230f4c9cc298fea3bbe97,

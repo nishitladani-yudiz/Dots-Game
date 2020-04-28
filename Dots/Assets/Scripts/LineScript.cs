@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class LineScript : MonoBehaviour
 {
+    public GameObject pauseButton;
     public Material material;
     public List<GameObject> dots;
     public GameObject LinePrefab;
@@ -37,7 +39,8 @@ public class LineScript : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-
+            if(EventSystem.current.IsPointerOverGameObject())
+                return;
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;
 
@@ -154,6 +157,7 @@ public class LineScript : MonoBehaviour
             else
             {
                 Debug.Log("Game Over");
+                pauseButton.SetActive(false);
                 gameOverPanel.DOAnchorPos(new Vector2(0, -100), 0.25f);
             }
             

@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 109256973}
   - component: {fileID: 109256972}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PauseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2434,6 +2434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c553d7272e2bda4d917c6fdfb571dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseButton: {fileID: 109256970}
   material: {fileID: 2100000, guid: e662478c485b90543bac25119f39659d, type: 2}
   dots: []
   LinePrefab: {fileID: 8980489223848960263, guid: 7871a7be5a6230f4c9cc298fea3bbe97,
