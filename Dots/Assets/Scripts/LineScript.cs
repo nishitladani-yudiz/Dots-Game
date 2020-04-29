@@ -37,9 +37,11 @@ public class LineScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+            
         if (Input.GetMouseButton(0))
         {
-            if(EventSystem.current.IsPointerOverGameObject())
+            if(IsPointerOverUIObject())
                 return;
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;
@@ -119,6 +121,7 @@ public class LineScript : MonoBehaviour
             if(numberOfPoints == 1)
             {
                 score += 2;
+                movesRemaining--;
                 scoreText.text = " " + score;
                 gameOverScoreText.text = " " + score;
                 Debug.Log(score);
@@ -126,6 +129,7 @@ public class LineScript : MonoBehaviour
             if(numberOfPoints == 2)
             {
                 score += 3;
+                movesRemaining--;
                 scoreText.text = " " + score;
                 gameOverScoreText.text = " " + score;
                 Debug.Log(score);
@@ -133,6 +137,7 @@ public class LineScript : MonoBehaviour
             if(numberOfPoints == 3)
             {
                 score += 4;
+                movesRemaining--;
                 scoreText.text = " " + score;
                 gameOverScoreText.text = " " + score;
                 Debug.Log(score);
@@ -140,6 +145,7 @@ public class LineScript : MonoBehaviour
             if(numberOfPoints >= 4)
             {
                 score += 5;
+                movesRemaining--;
                 scoreText.text = " " + score;
                 gameOverScoreText.text = " " + score;
                 Debug.Log(score);
@@ -147,14 +153,14 @@ public class LineScript : MonoBehaviour
             //score increment
             if(movesRemaining > 1)
             {
-                movesRemaining--;
+                //movesRemaining--;
                 moveText.text = "" + movesRemaining;
                 line = null;
                 numberOfPoints = 0;
                 dots.Clear();
                 popSound.Play();
             }
-            else
+            if(movesRemaining == 0)
             {
                 Debug.Log("Game Over");
                 pauseButton.SetActive(false);
@@ -164,9 +170,19 @@ public class LineScript : MonoBehaviour
             
 
         }
-
+        
         
     }
+
+    bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> result = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, result);
+        return result.Count > 0;
+    }
+
     bool compareColor(Color c1, Color c2)
     {
         bool b = false;
