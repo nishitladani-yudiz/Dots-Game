@@ -35,7 +35,7 @@ public class TimerCountScript : MonoBehaviour
                 //Debug.Log("Game Over");
                 isTimeOver = true;
 
-                gameOverPanel.DOAnchorPos(new Vector2(0, -100), 0.25f);
+                gameOverPanel.DOAnchorPos(new Vector2(0, 0), 0.25f);
                 pauseButton.SetActive(false);
             }
             

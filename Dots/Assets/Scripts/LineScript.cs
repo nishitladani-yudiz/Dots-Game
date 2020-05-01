@@ -164,7 +164,7 @@ public class LineScript : MonoBehaviour
             {
                 Debug.Log("Game Over");
                 pauseButton.SetActive(false);
-                gameOverPanel.DOAnchorPos(new Vector2(0, -100), 0.25f);
+                gameOverPanel.DOAnchorPos(new Vector2(0, 0), 0.25f);
             }
             
             
